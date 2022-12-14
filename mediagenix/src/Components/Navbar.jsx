@@ -163,7 +163,7 @@ export const Navbar = () => {
                   <Button>Pricing</Button>
                   <Button>Blog</Button>
                 </ButtonGroup>
-                <HStack spacing="8">
+                <HStack spacing="1">
                   <Btn tc="#2c4bff" text={"Log In"} />
                 <Btn clr="#2c4bff" text={"Get Started Now"} />
                  

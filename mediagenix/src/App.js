@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-import {Navbar} from "./Components/Navbar"
-import{ParaB,ParaC,ParaD, Para,BehindImg,Midpara} from './Components/para/Para';
-import Footer from './Components/Footer';
+import logo from "./logo.svg";
+import "./App.css";
+import { Navbar } from "./Components/Navbar";
+
+import Homepage from "./Pages/Homepage";
+import { useColorMode,Button } from "@chakra-ui/react";
+import {MdDarkMode} from "react-icons/md"
+
 
 function App() {
+ 
+    const { colorMode, toggleColorMode } = useColorMode()
+    
+  
+
   return (
     <>
-    <Navbar/>
-    <Para/>
-   < BehindImg/>
-   <Midpara/>
-    <ParaB/>
-    <ParaC/>
-    <ParaD/>
-    <Footer/>
-
-    
-        
+     <header>
+        <Button onClick={toggleColorMode}>
+        <MdDarkMode/>
+        </Button>
+      </header>
+   
+      <Homepage colorMode={colorMode} />
     </>
   );
 }
