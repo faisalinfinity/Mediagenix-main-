@@ -12,7 +12,7 @@ import {
 
 import Btn from "../Buttons/Btn-1";
 
-export function Para() {
+export function Para({colorMode}) {
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={3} flex={1} align={"top"} justify={"center"}>
@@ -20,7 +20,7 @@ export function Para() {
           <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
             <br />{" "}
             <Center>
-            <Text color={"black"} as={"span"}>
+            <Text  as={"span"}>
               Grow your audience on social and beyond
             </Text>
 
@@ -28,7 +28,7 @@ export function Para() {
            {" "}
           </Heading>
           <Center>
-          <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
+          <Text  fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
             Mediagenix helps you build an audience organically. We’re a
             values-driven company that provides affordable, intuitive, marketing
             tools for ambitious people and teams.
@@ -69,7 +69,7 @@ export function BehindImg() {
   );
 }
 
-export function Midpara() {
+export function Midpara({colorMode}) {
   return (
     <VStack minH={"100vh"} direction={{ base: "row", md: "row" }}>
       <Flex p={3} flex={1} align={"top"} justify={"center"}>
@@ -77,7 +77,7 @@ export function Midpara() {
           <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
             <br />{" "}
             <Center>
-            <Text color={"black"} as={"span"}>
+            <Text  as={"span"}>
               Grow your following without draining your time
             </Text>
 
@@ -99,6 +99,7 @@ export function Midpara() {
       <Flex flex={1}>
       <Center>
       <Image
+       display={colorMode==="light"?"block":"none"}
           w="100%"
           h="70%"
           alt={"Login Image"}
@@ -119,7 +120,7 @@ export function ParaB() {
           <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
             <br />{" "}
             <Center>
-            <Text color={"black"} as={"span"}>
+            <Text  as={"span"}>
               Get the clicks you deserve
             </Text>
 
@@ -166,7 +167,7 @@ export function ParaC() {
           <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
             <br />{" "}
             <Center>
-            <Text color={"black"} as={"span"}>
+            <Text  as={"span"}>
               Grow your following
             </Text>
 
@@ -213,7 +214,7 @@ export function ParaD() {
           <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
             <br />{" "}
             <Center>
-            <Text color={"black"} as={"span"}>
+            <Text  as={"span"}>
               Halve your workload
             </Text>
 
