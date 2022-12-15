@@ -5,6 +5,8 @@ import { Navbar } from "./Components/Navbar";
 import Homepage from "./Pages/Homepage";
 import { useColorMode,Button } from "@chakra-ui/react";
 import {MdDarkMode} from "react-icons/md"
+import { PublishParaA } from "./Components/para/Para";
+import PublishB from "./Pages/Publish-b";
 
 
 function App() {
@@ -21,7 +23,8 @@ function App() {
         </Button>
       </header>
    
-      <Homepage colorMode={colorMode} />
+      {/* <Homepage colorMode={colorMode} /> */}
+      <PublishB/>
     </>
   );
 }

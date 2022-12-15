@@ -19,10 +19,11 @@ import {
   ParaB,
   ParaC,
   ParaD,
+  PublishParaA,
 } from "../Components/para/Para";
 import Testimonials from "../Components/Testimonials/Testimonial";
 
-export default function Homepage({ colorMode }) {
+export default function PublishB({ colorMode }) {
   const testimonials = [
     {
       src: "https://buffer.com/static/testimonials/luis-cancel-huckberry-mobile.jpg",
@@ -56,29 +57,36 @@ export default function Homepage({ colorMode }) {
     },
   ];
 
-  const Midpara_homepage =
-    "https://buffer.com/static/misc/buffer-loop-v2-variant.svg";
-  const Midpara_homepage_text1 =
-    " Grow your following without draining your time";
+  const Midpara_publish_image =
+    "https://buffer.com/static/google-business-profile/webp/screenshot-all-channels.webp";
+  const text1 =
+    "Craft the perfect post for each social network, all in one place";
   const text2 =
-    "  Social media can be the fastest and cheapest way to build your following and grow your business. But it can also take up all your time. Here are four ways Buffer can help.";
+    "Publishing content on all of your channels shouldn’t be a time-drain. Plan and publish on every channel in one simple-to-use dashboard.";
 
-
-    
   return (
     <>
       <Navbar />
-      <Para colorMode={colorMode} />
-      <BehindImg />
+    
+      {/* <BehindImg /> */}
 
       <Midpara
-        src={Midpara_homepage}
+        text1={text1}
+        text2={text2}
+        src={Midpara_publish_image}
         colorMode={colorMode}
-        text1={Midpara_homepage_text1}
       />
-      <ParaB colorMode={colorMode} />
-      <ParaC colorMode={colorMode} />
-      <ParaD colorMode={colorMode} />
+      <PublishParaA
+        text1={"Build your audience and grow your brand on social media"}
+        text2={
+          "Plan and publish your content for Instagram, TikTok, Facebook, Twitter, Pinterest, and LinkedIn, all from one simple dashboard."
+        }
+        src="https://buffer.com/static/animation/hero-buffer-publish-animation-v2.mp4"
+        btntext={"Start Your Free Trial"}
+      />
+      <ParaB />
+      <ParaC />
+      <ParaD />
       <Center>
         <HStack spacing={100} overflowX="scroll">
           {testimonials.map((el, i) => (
