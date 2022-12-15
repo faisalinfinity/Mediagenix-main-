@@ -7,6 +7,8 @@ import { useColorMode,Button } from "@chakra-ui/react";
 import {MdDarkMode} from "react-icons/md"
 import { PublishParaA } from "./Components/para/Para";
 import PublishB from "./Pages/Publish-b";
+import AllRoutes from "./Components/AllRoutes";
+import Login from "./Pages/Login";
 
 
 function App() {
@@ -17,14 +19,14 @@ function App() {
 
   return (
     <>
-     <header>
-        <Button onClick={toggleColorMode}>
+     <header  >
+        <Button position={"absolute"} onClick={toggleColorMode}>
         <MdDarkMode/>
         </Button>
       </header>
-   
-      {/* <Homepage colorMode={colorMode} /> */}
-      <PublishB/>
+      {/* <AllRoutes colorMode={colorMode}  /> */}
+      <Login/>
+     
     </>
   );
 }

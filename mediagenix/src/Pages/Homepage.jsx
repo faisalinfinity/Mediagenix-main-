@@ -8,6 +8,7 @@ import {
   Flex,
   Grid,
   Container,
+  Button
 } from "@chakra-ui/react";
 import Btn from "../Components/Buttons/Btn-1";
 import Footer from "../Components/Footer";
@@ -76,9 +77,12 @@ export default function Homepage({ colorMode }) {
         colorMode={colorMode}
         text1={Midpara_homepage_text1}
       />
-      <ParaB colorMode={colorMode} />
-      <ParaC colorMode={colorMode} />
-      <ParaD colorMode={colorMode} />
+      <ParaB src="https://buffer.com/static/illustrations/thumb-stop-content-2.webp" text1="Get the clicks you deserve" text2=" Mediagenix will tell you when and what to publish to make your
+              content stand out." />
+      <ParaC src={"https://buffer.com/static/illustrations/collaborate-more-efficiently@2x.webp"} text1={"Grow your following"} text2='Mediagenix will share your content on the right channels, with
+              suggested hashtags to help you grow.' />
+      <ParaD src={"https://buffer.com/static/illustrations/hero-reply@2x-2.webp"} text1={"Halve your workload"} text2=" Mediagenix will publish everything for you to save time and it’ll
+              showcase your work with automated reports."  />
       <Center>
         <HStack spacing={100} overflowX="scroll">
           {testimonials.map((el, i) => (
@@ -117,11 +121,17 @@ export default function Homepage({ colorMode }) {
       </Center>
       <HStack bg={"#2c4bff"} mt={"70px"} w={"100%"} h="500px">
         <Center>
+          <VStack>
           <Heading w="50%">
             140,000+ people like you use Buffer to build their brand on social
             media every month
-            <Btn wd={"60px"} clr={"#e97284"} text={"Get Started Now"} />
+            
+            
           </Heading>
+          <Button h={"80px"} bg={"#e97284"} w={{base:"50%",md:"60%",lg:"40%"}} >Get Started Now</Button>
+
+          </VStack>
+          
         </Center>
       </HStack>
 

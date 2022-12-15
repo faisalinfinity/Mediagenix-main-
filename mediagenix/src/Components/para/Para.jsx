@@ -102,7 +102,7 @@ export function Midpara({ colorMode, text1, text2, src }) {
   );
 }
 
-export function ParaB() {
+export function ParaB({text1,text2,src}) {
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={3} flex={1} align={"top"} justify={"center"}>
@@ -110,13 +110,12 @@ export function ParaB() {
           <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
             <br />{" "}
             <Center>
-              <Text as={"span"}>Get the clicks you deserve</Text>
+              <Text as={"span"}>{text1}</Text>
             </Center>{" "}
           </Heading>
           <Center>
             <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
-              Mediagenix will tell you when and what to publish to make your
-              content stand out.
+             {text2}
             </Text>
           </Center>
 
@@ -133,7 +132,7 @@ export function ParaB() {
             alt={"Login Image"}
             objectFit={"cover"}
             src={
-              "https://buffer.com/static/illustrations/thumb-stop-content-2.webp"
+              src
             }
           />
         </Center>
@@ -142,7 +141,7 @@ export function ParaB() {
   );
 }
 
-export function ParaC() {
+export function ParaC({text1,text2,src}) {
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row-reverse" }}>
       <Flex
@@ -155,13 +154,12 @@ export function ParaC() {
           <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
             <br />{" "}
             <Center>
-              <Text as={"span"}>Grow your following</Text>
+              <Text as={"span"}>{text1}</Text>
             </Center>{" "}
           </Heading>
           <Center>
             <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
-              Mediagenix will share your content on the right channels, with
-              suggested hashtags to help you grow.
+              {text2}
             </Text>
           </Center>
 
@@ -179,7 +177,7 @@ export function ParaC() {
             alt={"Login Image"}
             objectFit={"cover"}
             src={
-              "https://buffer.com/static/illustrations/collaborate-more-efficiently@2x.webp"
+              src
             }
           />
         </Center>
@@ -188,7 +186,7 @@ export function ParaC() {
   );
 }
 
-export function ParaD() {
+export function ParaD({text1,text2,src}) {
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={3} flex={1} align={"top"} justify={"center"}>
@@ -196,13 +194,12 @@ export function ParaD() {
           <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
             <br />{" "}
             <Center>
-              <Text as={"span"}>Halve your workload</Text>
+              <Text as={"span"}>{text1}</Text>
             </Center>{" "}
           </Heading>
           <Center>
             <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
-              Mediagenix will publish everything for you to save time and it’ll
-              showcase your work with automated reports.
+             {text2}
             </Text>
           </Center>
 
@@ -218,7 +215,7 @@ export function ParaD() {
             h="70%"
             alt={"Login Image"}
             objectFit={"cover"}
-            src={"https://buffer.com/static/illustrations/hero-reply@2x-2.webp"}
+            src={src}
           />
         </Center>
       </Flex>
