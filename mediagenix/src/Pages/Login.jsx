@@ -59,7 +59,7 @@ const Authenticate=()=>{
   }
   
 
-
+    
 
 
   return (
@@ -133,7 +133,7 @@ const Authenticate=()=>{
         </Center>
         <Image  src="https://login.buffer.com/img/sp-login-image.png"></Image>
         
-      </Stack>
+      </Stack>  
  
     </Grid>
   );
