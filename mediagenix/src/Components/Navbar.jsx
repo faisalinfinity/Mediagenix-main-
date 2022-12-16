@@ -33,8 +33,8 @@ import {HiOutlinePencilSquare} from "react-icons/hi2"
 
 import Btn from "./Buttons/Btn-1"
 
-
-
+  
+  
 import {
   PhoneIcon,
   AddIcon,
@@ -42,6 +42,8 @@ import {
   ChevronDownIcon,
 } from "@chakra-ui/icons";
 import DrawerExample from "./Drawer/Drawer";
+import { NavLink } from "react-router-dom";
+import Logo from "./logo";
 
 export const Navbar = () => {
   const isDesktop = useBreakpointValue({
@@ -73,17 +75,7 @@ export const Navbar = () => {
           }}
         >
           <HStack spacing="100" justify="space-between">
-            <VStack>
-            <Image
-              w="80px"
-              display={"block"}
-              borderRadius={"50%"}
-              src="https://i.postimg.cc/Kz1pzdck/Mediagenix.gif"
-              alt="logo"
-            />
-              <Text fontWeight={"bold"}>Mediagenix</Text>
-
-            </VStack>
+           <Logo/>
            
             {isDesktop ? (
               <Flex gap={"500px"} justify="space-between" flex="1">
@@ -109,7 +101,7 @@ export const Navbar = () => {
                     
                     >
                       <MenuItem>
-                        <Button leftIcon={<BiPaperPlane/>} variant="ghost">Publishing</Button>
+                        <Button leftIcon={<BiPaperPlane/>} variant="ghost"><NavLink to={"/publishing"} >Publishing</NavLink></Button>
                       </MenuItem>
                       <MenuItem>
                         <Button leftIcon={<GrLineChart/>}  variant="ghost">Analytics</Button>

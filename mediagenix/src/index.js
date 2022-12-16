@@ -6,19 +6,33 @@ import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider, ThemeProvider } from "@chakra-ui/react";
 import { ColorModeScript } from '@chakra-ui/react'
 import theme from "./Components/theme"
+import {BrowserRouter} from "react-router-dom"
+import AuthContextProvider from "./AuthContext/AuthContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
+  <BrowserRouter>
+  <AuthContextProvider>
     
-  <ChakraProvider>
-    <>
+    <ChakraProvider>
     
-    </>
+  
      
     <ColorModeScript initialColorMode={theme.config.initialColorMode}/>
       <App />
       
   
   </ChakraProvider>
+  
+ 
+
+
+  </AuthContextProvider>
+  </BrowserRouter>
+
+
+    
+
 );
 
 // If you want to start measuring performance in your app, pass a function

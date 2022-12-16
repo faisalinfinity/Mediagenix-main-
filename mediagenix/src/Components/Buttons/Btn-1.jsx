@@ -1,4 +1,5 @@
 import { Button, Center } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 // Now we can use the new `brandPrimary` variant
 
@@ -15,7 +16,7 @@ export default function Btn({ text, clr, brdr, tc,wd }) {
         colorScheme="brand"
        
       >
-        {text}
+       <Link to="/login" >{text}</Link> 
       </Button>
     </Center>
   );
