@@ -1,0 +1,16 @@
+{
+  "data": [{
+    "id":"janet.weaver@reqres.in",
+    "email": "janet.weaver@reqres.in",
+    "password": "janet.weaver@reqres.in"
+  },
+  {
+    "email":"mujtabafaisal944@gmail.com",
+    "password":"12345678",
+    "name":"faisal"
+  }],
+  "support": {
+    "url": "https://reqres.in/#support-heading",
+    "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
+  }
+}

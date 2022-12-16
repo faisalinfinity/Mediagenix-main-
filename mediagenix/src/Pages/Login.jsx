@@ -16,9 +16,52 @@ import {
   VStack,
   border
 } from "@chakra-ui/react";
+import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext/AuthContext";
 import Logo from "../Components/logo";
+import axios from "axios"
+
+const UserData=[{email:"mujtabafaisal944@gmail.com",name:"faisal",password:"12345678"},{}]
 
 export default function Login() {
+ 
+  const{GoogleAuthUI,profile}=useContext(AuthContext)
+
+const [email,setemail]=useState("")
+const [password,setpassword]=useState("")
+
+const handleemail=(e)=>{
+  setemail(e.target.value)
+}
+
+const handlepassword=(e)=>{
+  setpassword(e.target.value)
+}
+const obj={
+ email:email,
+  password:password
+}
+
+const Authenticate=()=>{
+
+   UserData.map((el)=>{
+      if(el.email==email){
+        if(el.password==password){
+          alert("Login Successful")
+          return
+        }else{
+          alert("Incorrect Password")
+        }
+      }
+    })
+
+  }
+  
+
+
+
+
   return (
     <Grid
       templateColumns={{base:"100%",lg:"35% 65%"}}
@@ -42,12 +85,12 @@ export default function Login() {
         >
           <Stack spacing={4}>
             <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <FormLabel>Username</FormLabel>
+              <Input onChange={handleemail} type="text" />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <Input onChange={handlepassword} type="password" />
             </FormControl>
             <Stack spacing={10}>
               <Stack
@@ -58,7 +101,8 @@ export default function Login() {
                 <Checkbox>Remember me</Checkbox>
                 <Link color={"blue.400"}>Forgot password?</Link>
               </Stack>
-              <Button
+              <GoogleAuthUI />
+              <Button onClick={Authenticate}
                 bg={"#2c4bff"}
                 color={"white"}
                 _hover={{
@@ -69,6 +113,7 @@ export default function Login() {
               >
                 Sign in
               </Button>
+             
             </Stack>
           </Stack>
         </Box>

@@ -7,11 +7,13 @@ import { ChakraProvider, ThemeProvider } from "@chakra-ui/react";
 import { ColorModeScript } from '@chakra-ui/react'
 import theme from "./Components/theme"
 import {BrowserRouter} from "react-router-dom"
+import AuthContextProvider from "./AuthContext/AuthContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-
   <BrowserRouter>
+  <AuthContextProvider>
+    
     <ChakraProvider>
     
   
@@ -22,7 +24,13 @@ root.render(
   
   </ChakraProvider>
   
+ 
+
+
+  </AuthContextProvider>
   </BrowserRouter>
+
+
     
 
 );

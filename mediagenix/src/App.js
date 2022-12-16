@@ -11,10 +11,14 @@ import AllRoutes from "./Components/AllRoutes";
 import Login from "./Pages/Login";
 
 
+
+
+
 function App() {
  
     const { colorMode, toggleColorMode } = useColorMode()
-    
+
+   
   
 
   return (
@@ -24,8 +28,10 @@ function App() {
         <MdDarkMode/>
         </Button>
       </header>
-      {/* <AllRoutes colorMode={colorMode}  /> */}
-      <Login/>
+      <AllRoutes colorMode={colorMode}  />
+      {/* <Login/> */}
+
+
      
     </>
   );
