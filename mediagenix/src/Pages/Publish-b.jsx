@@ -8,8 +8,11 @@ import {
   Flex,
   Grid,
   Container,
+  Image,
+  Button,
 } from "@chakra-ui/react";
 import Btn from "../Components/Buttons/Btn-1";
+import Faq from "../Components/Faq";
 import Footer from "../Components/Footer";
 import { Navbar } from "../Components/Navbar";
 import {
@@ -67,15 +70,6 @@ export default function PublishB({ colorMode }) {
   return (
     <>
       <Navbar />
-    
-      {/* <BehindImg /> */}
-
-      <Midpara
-        text1={text1}
-        text2={text2}
-        src={Midpara_publish_image}
-        colorMode={colorMode}
-      />
       <PublishParaA
         text1={"Build your audience and grow your brand on social media"}
         text2={
@@ -84,52 +78,87 @@ export default function PublishB({ colorMode }) {
         src="https://buffer.com/static/animation/hero-buffer-publish-animation-v2.mp4"
         btntext={"Start Your Free Trial"}
       />
-      <ParaB />
-      <ParaC />
-      <ParaD />
+      <BehindImg />
+
+      <Midpara
+        text1={text1}
+        text2={text2}
+        src={Midpara_publish_image}
+        colorMode={colorMode}
+      />
+
+      <ParaB
+        src={
+          "https://static.buffer.com/cdn-cgi/image/w=640,quality=90,format=auto/marketing/static/illustrations/buffer-publish-instagram@2x-2.png"
+        }
+        text1={"Take your Instagram marketing to the next level"}
+        text2="Build your brand on Instagram. Work together with your team to plan, preview, and schedule your upcoming Instagram posts, carousels, and campaigns"
+      />
+      <ParaC
+        src={
+          "https://static.buffer.com/cdn-cgi/image/w=640,quality=90,format=auto/marketing/static/screenshots/publish-instragram-stories.jpg"
+        }
+        text1="Plan and prepare your TikToks and Stories"
+        text2={
+          "Plan and set reminders for your Stories and TikTok videos. You will receive a mobile notification when it’s time to share."
+        }
+      />
+      <ParaD
+        src="https://static.buffer.com/cdn-cgi/image/w=640,quality=90,format=auto/marketing/static/illustrations/buffer-publish-planning@2x.jpeg"
+        text2={
+          "Queue up content on an automated schedule or choose a custom time for each post. You're in total command of what you share and when."
+        }
+        text1={"Plan out the perfect posting schedule"}
+      />
+      <ParaC
+        src="https://buffer.com/static/testimonials/luis-cancel-huckberry-v2.png"
+        text1="Buffer has made sharing our story and building our brand on social media so much easier."
+      />
       <Center>
-        <HStack spacing={100} overflowX="scroll">
-          {testimonials.map((el, i) => (
-            <Testimonials
-              key={i + 1}
-              src={el.src}
-              text1={el.text1}
-              text2={el.text2}
-            />
-          ))}
-        </HStack>
+        <Flex flexWrap={"wrap"}>
+          <Box>
+            <VStack>
+              <Image src="https://static.buffer.com/cdn-cgi/image/w=384,quality=90,format=auto/marketing/static/ui/buffer-publish-scheduling@2x.jpeg"></Image>
+              <Text fontWeight={"bold"}>Scheduling</Text>
+              <Text>
+                Create a preset publishing schedule for each social account
+              </Text>
+            </VStack>
+          </Box>
+          <Box>
+            <VStack>
+              <Image src="https://static.buffer.com/cdn-cgi/image/w=384,quality=90,format=auto/marketing/static/ui/buffer-publish-tailored-posts-v2@2x.jpg"></Image>
+              <Text fontWeight={"bold"}>Tailored posts</Text>
+              <Text>Custom tailor your posts for each social network</Text>
+            </VStack>
+          </Box>
+          <Box>
+            <VStack>
+              <Image src="https://static.buffer.com/cdn-cgi/image/w=384,quality=90,format=auto/marketing/static/ui/buffer-publish-calendar@2x.jpeg"></Image>
+              <Text fontWeight={"bold"}>Calendar</Text>
+              <Text>
+                Get an at-a-glance view of all the content you have lined up
+              </Text>
+            </VStack>
+          </Box>
+        </Flex>
       </Center>
-      <Center>
-        <Grid
-          templateColumns={{ base: "repeat(2,1fr)", lg: "repeat(4,1fr)" }}
-          w={"80%"}
-          justifyContent={"space-between"}
-        >
-          <Box>
-            <Heading color={"#2c4bff"}>10 years</Heading>
-            <Text>in business</Text>
-          </Box>
-          <Box>
-            <Heading color={"#2c4bff"}>140,000</Heading>
-            <Text>users</Text>
-          </Box>
-          <Box>
-            <Heading color={"#2c4bff"}>100k+</Heading>
-            <Text>monthly blog readers</Text>
-          </Box>
-          <Box>
-            <Heading color={"#2c4bff"}>1.2m+</Heading>
-            <Text>social followers</Text>{" "}
-          </Box>
-        </Grid>
-      </Center>
+
+      <Faq/>
+      
       <HStack bg={"#2c4bff"} mt={"70px"} w={"100%"} h="500px">
         <Center>
+          <VStack>
           <Heading w="50%">
             140,000+ people like you use Buffer to build their brand on social
             media every month
-            <Btn wd={"60px"} clr={"#e97284"} text={"Get Started Now"} />
+            
+            
           </Heading>
+          <Button h={"80px"} bg={"#e97284"} w={{base:"50%",md:"60%",lg:"40%"}} >Get Started Now</Button>
+
+          </VStack>
+          
         </Center>
       </HStack>
 
