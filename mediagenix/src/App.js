@@ -3,7 +3,7 @@ import "./App.css";
 import { Navbar } from "./Components/Navbar";
 
 import Homepage from "./Pages/Homepage";
-import { useColorMode,Button } from "@chakra-ui/react";
+import { useColorMode,Button, Container } from "@chakra-ui/react";
 import {MdDarkMode} from "react-icons/md"
 import { PublishParaA } from "./Components/para/Para";
 import PublishB from "./Pages/Publish-b";
@@ -22,18 +22,24 @@ function App() {
   
 
   return (
-    <>
-     <header  >
+ <>
+      <header  >
         <Button position={"absolute"} onClick={toggleColorMode}>
         <MdDarkMode/>
         </Button>
       </header>
       <AllRoutes colorMode={colorMode}  />
       {/* <Login/> */}
+ 
+ </>
+
+
+
+    
 
 
      
-    </>
+   
   );
 }
 
