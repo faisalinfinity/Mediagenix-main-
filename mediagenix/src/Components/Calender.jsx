@@ -36,6 +36,8 @@ import {
 
 function Dates() {
  const [date, setDate] = useState(new Date())
+ localStorage.setItem("date",JSON.stringify(date.toDateString()))
+ 
 
 
 
@@ -61,7 +63,7 @@ function CalendarExp(){
     const [imgurl, setimgurl] = useState("");
     const [idea, setidea] = useState("");
     const [Data, setdata] = useState({});
-
+    const currentdate=JSON.parse(localStorage.getItem("date"))
 
     const GetData = () => {
         axios
@@ -84,6 +86,7 @@ function CalendarExp(){
         let obj = {
           text: idea,
           url: imgurl,
+          date:currentdate
         };
     
         axios

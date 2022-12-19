@@ -46,6 +46,85 @@ import {
     AlertTitle,
     AlertDescription,
   } from '@chakra-ui/react'
+ 
+
+  const TimerComponent=()=>{
+    const [timer, setTimer] = useState(300);
+    const UseRef = useRef(null);
+    const navigate=useNavigate()
+  
+    const fixTimestr = (time) => {
+      return time < 10 ? `0${time}` : time;
+    };
+    const formattimetostring = (time) => {
+      const seconds = time % 60;
+      const minutes = Math.floor(time / 60) % 60;
+  
+      const outputStr = `${fixTimestr(minutes)}:${fixTimestr(seconds)}`;
+      return outputStr;
+    };
+  
+  
+    useEffect(() => {
+      StartTimer();
+  
+      const CleanupFunc = () => {
+        StopTimer();
+      };
+      return CleanupFunc;
+    }, []);
+  
+    const StartTimer = () => {
+      if (UseRef.current !== null) {
+        return;
+      }
+  
+      UseRef.current = setInterval(() => {
+        setTimer((prev) => {
+          if (prev <= 1) {
+              navigate("/dashboard")
+            clearInterval(UseRef.current);
+          }
+          return prev - 1;
+        });
+        console.log(12);
+      }, 1000);
+    };
+  
+    const StopTimer = () => {
+      clearInterval(UseRef.current);
+      UseRef.current = null;
+    };
+  
+    const ResetTimer = () => {
+      setTimer(90);
+      StopTimer();
+    };
+  
+   
+    return(
+      <VStack>
+              <Text fontSize={"15px"} fontWeight={"bold"}>
+                Complete payment within .. {formattimetostring(timer)}
+              </Text>
+              {/* <Slider
+              w={"100%"}
+                aria-label="slider-ex-2"
+                colorScheme="red"
+               defaultValue={300}
+               value={timer}
+               min={0}
+               max={300}
+               
+              >
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb />
+              </Slider> */}
+            </VStack>
+    )
+  }
 
 
 export default function Payment() {
@@ -60,70 +139,19 @@ export default function Payment() {
 
   const price=+localStorage.getItem("price")
   const [showPassword, setShowPassword] = useState(false);
-  const navigate=useNavigate()
+
   const [visible,setvisible]=useState(false)
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = useState(<OverlayTwo />);
-
-  //Timer
-  const [timer, setTimer] = useState(300);
-  const UseRef = useRef(null);
-
-  const fixTimestr = (time) => {
-    return time < 10 ? `0${time}` : time;
-  };
-  const formattimetostring = (time) => {
-    const seconds = time % 60;
-    const minutes = Math.floor(time / 60) % 60;
-
-    const outputStr = `${fixTimestr(minutes)}:${fixTimestr(seconds)}`;
-    return outputStr;
-  };
-
-
-  useEffect(() => {
-    StartTimer();
-
-    const CleanupFunc = () => {
-      StopTimer();
-    };
-    return CleanupFunc;
-  }, []);
-
-  const StartTimer = () => {
-    if (UseRef.current !== null) {
-      return;
-    }
-
-    UseRef.current = setInterval(() => {
-      setTimer((prev) => {
-        if (prev <= 1) {
-            navigate("/dashboard")
-          clearInterval(UseRef.current);
-        }
-        return prev - 1;
-      });
-      console.log(12);
-    }, 1000);
-  };
-
-  const StopTimer = () => {
-    clearInterval(UseRef.current);
-    UseRef.current = null;
-  };
-
-  const ResetTimer = () => {
-    setTimer(90);
-    StopTimer();
-  };
-
+  const navigate=useNavigate()
   const Redirect=()=>{
     let timeout=setTimeout(()=>{
         navigate("/dashboard")
 
     },3000)
   }
+ 
 
 
   return (
@@ -169,26 +197,7 @@ export default function Payment() {
               </Center>
             </Heading>
 
-            <VStack>
-              <Text fontSize={"15px"} fontWeight={"bold"}>
-                Complete payment within .. {formattimetostring(timer)}
-              </Text>
-              <Slider
-              w={"100%"}
-                aria-label="slider-ex-2"
-                colorScheme="red"
-               defaultValue={300}
-               value={timer}
-               min={0}
-               max={300}
-               
-              >
-                <SliderTrack>
-                  <SliderFilledTrack />
-                </SliderTrack>
-                <SliderThumb />
-              </Slider>
-            </VStack>
+            <TimerComponent/>
           </VStack>
         </VStack>
 
