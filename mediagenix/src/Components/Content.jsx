@@ -40,6 +40,8 @@ export default function Content() {
   const [Data, setdata] = useState({});
   const [status,setstatus]=useState(false)
 
+  const currentdate=JSON.parse(localStorage.getItem("date"))
+
   const GetData = () => {
     axios
       .get(`http://localhost:8080/data`)
@@ -58,6 +60,7 @@ export default function Content() {
     let obj = {
       text: idea,
       url: imgurl,
+      date:currentdate
     };
 
     axios
@@ -69,6 +72,12 @@ export default function Content() {
   const handleinput = (e) => {
     setidea(e.target.value);
   };
+
+  const handleDelete=(id)=>{
+    
+    axios.delete(`http://localhost:8080/data/${id}`)
+    setstatus(!status)
+  }
 
   const onDrop = useCallback((acceptedFiles) => {
     // this callback will be called after files get dropped, we will get the acceptedFiles. If you want, you can even access the rejected files too
@@ -125,7 +134,7 @@ export default function Content() {
 
   return (
     <Grid
-      border={"1px solid grey"}
+      // border={"1px solid grey"}
       fontFamily={"san-serif"}
       fontWeight={"bold"}
       flexDirection={"column"}
@@ -198,16 +207,24 @@ export default function Content() {
       <Grid
         p={"30px"}
         gap={"15px"}
-        templateRows={"220px"}
+        templateRows={""}
         templateColumns={{ base: "repeat(1,1fr)", lg: "repeat(4,1fr)" }}
       >
         {Data &&
           Data?.data &&
           Data?.data?.map((el) => (
             <GridItem  key={el.id}>
-              <img style={{ width: "100%" }} src={el.url} alt="abc" />
               <Center>
+              <img  style={{ width: "70%" }} src={el.url} alt="abc" />
+              </Center>
+           
+              <Center>
+                <VStack>
                 <Text>{el.text}</Text>
+                <Text textDecoration={"underline"}  p={"2px"} border={"1px solid "} fontSize={"13px"}>{el.date}</Text>
+                <Button onClick={()=>handleDelete(el.id)} color={"white"} _hover={{color:"black",border:"1px solid #f1041c",bg:"white"}} bg={"red.500"} fontSize={"15px"} >Delete</Button>
+                </VStack>
+                
               </Center>
             </GridItem>
           ))}

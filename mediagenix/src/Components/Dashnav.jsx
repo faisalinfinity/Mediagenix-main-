@@ -107,7 +107,7 @@ export const DashNav = () => {
             lg: "5",
           }}
         >
-          <HStack  gap={"1px"} spacing="1" >
+          <HStack  gap={"1px"} spacing={{base:"200",sm:"500",lg:"1"}} >
             <Logo />
 
             {isDesktop ? (
