@@ -56,10 +56,13 @@ import {
   ChevronDownIcon,
 } from "@chakra-ui/icons";
 import DrawerExample from "./Drawer/Drawer";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./logo";
 import { useState } from "react";
 import Content from "./Content";
+import CalendarExp from "./Calender"
+import { AuthContext } from "../AuthContext/AuthContext";
+
 
 export const DashNav = () => {
   const isDesktop = useBreakpointValue({
@@ -67,13 +70,17 @@ export const DashNav = () => {
     lg: true,
   });
 
+
+ 
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [flag, setflag] = useBoolean();
   const [Index, setIndex] = useState(0);
   const [Index2,setIndex2]=useState(0)
-
+ const navigate=useNavigate()
   console.log(Index2)
-
+  const {LogoutButton,profile}=React.useContext(AuthContext)
+  console.log(profile.imageUrl)
  
 
   //
@@ -93,14 +100,14 @@ export const DashNav = () => {
         bg="bg-surface"
         boxShadow={useColorModeValue("sm", "sm-dark")}
       >
-        <Container
-          marginLeft={{ base: "0px", lg: "80px" }}
+        <Container  
+          marginLeft={{ base: "0px", lg: "10px" }}
           py={{
             base: "4",
             lg: "5",
           }}
         >
-          <HStack gap={"40px"} spacing="1" justify="space-between">
+          <HStack  gap={"1px"} spacing="1" >
             <Logo />
 
             {isDesktop ? (
@@ -108,15 +115,16 @@ export const DashNav = () => {
                 <ButtonGroup variant="link" spacing="8">
                   
                   <Tabs onChange={(index) => setIndex(index)}>
-                    <TabList>
-                      <Tab>Publishing</Tab>
-                      <Tab>Analytics</Tab>
-                      <Tab>Engagements</Tab>
-                      <Tab>StartPage</Tab>
+                    <TabList >
+                      <Tab   fontSize={"17px"} fontWeight={"bold"} >Publishing</Tab>
+                      <Tab fontSize={"17px"} fontWeight={"bold"} >Analytics</Tab>
+                      <Tab fontSize={"17px"} fontWeight={"bold"} >Engagements</Tab>
+                      <Tab fontSize={"17px"} fontWeight={"bold"} >StartPage</Tab>
                     </TabList>
                   </Tabs>
                 </ButtonGroup>
-                <HStack spacing={{ base: "0", md: "6" }}>
+                <HStack spacing={{ base: "0", md: "1" }}>
+                  <Button onClick={()=>navigate("/pricing")} color={"#2c4bff"} variant={"link"}>See Plans</Button>
                   <IconButton
                     size="lg"
                     variant="ghost"
@@ -133,9 +141,8 @@ export const DashNav = () => {
                         <HStack>
                           <Avatar
                             size={"sm"}
-                            src={
-                              "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                            }
+                            alt={profile?.src}
+                            src={profile.imageUrl}
                           />
                           <VStack
                             display={{ base: "none", md: "flex" }}
@@ -143,7 +150,7 @@ export const DashNav = () => {
                             spacing="1px"
                             ml="2"
                           >
-                            <Text fontSize="sm">mujtabafaisal944</Text>
+                            <Text fontSize="sm">{profile.email}</Text>
                             <Text fontSize="xs" color="gray.600">
                               Admin
                             </Text>
@@ -158,7 +165,7 @@ export const DashNav = () => {
                         <MenuItem>Settings</MenuItem>
                         <MenuItem>Billing</MenuItem>
                         <MenuDivider />
-                        <MenuItem>Sign out</MenuItem>
+                        <MenuItem><LogoutButton/></MenuItem>
                       </MenuList>
                     </Menu>
                   </Flex>
@@ -172,12 +179,12 @@ export const DashNav = () => {
           </HStack>
         </Container>
         <Grid
-          border={"1px solid black"}
-          templateColumns={"15% 85%"}
-          templateRows={"600px"}
+         
+          templateColumns={{base:"repeat(1,1fr)",lg:"15% 85%"}}
+          templateRows={{base:"auto",lg:"auto"}}
         >
           <GridItem border={"1px solid grey"}>
-            <VStack>
+            <VStack >
               <Tabs onChange={(index) => setIndex2(index)}>
                 <Tab>
                   <Text fontWeight={"bold"}>
@@ -235,7 +242,14 @@ export const DashNav = () => {
 </Accordion>
             </VStack>
           </GridItem>
-          <GridItem border={"1px solid black"}><Content/></GridItem>
+          <GridItem >
+
+           {Index2==0?<Content/>:null}
+           {Index2==1?<CalendarExp/>:null}
+            
+            
+          
+          </GridItem>
         </Grid>
       </Box>
     </Box>

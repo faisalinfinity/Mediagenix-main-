@@ -21,15 +21,16 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Logo from "../Components/logo";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
-const UserData=[{email:"mujtabafaisal944@gmail.com",name:"faisal",password:"12345678"},{}]
 
 export default function Login() {
  
-  const{GoogleAuthUI,profile}=useContext(AuthContext)
+  const{GoogleAuthUI,profile,setisAuth,setProfile}=useContext(AuthContext)
 
 const [email,setemail]=useState("")
 const [password,setpassword]=useState("")
+const navigate=useNavigate()
 
 const handleemail=(e)=>{
   setemail(e.target.value)
@@ -43,11 +44,21 @@ const obj={
   password:password
 }
 
+const UserData=JSON.parse(localStorage.getItem("muser"))
+
 const Authenticate=()=>{
 
    UserData.map((el)=>{
       if(el.email==email){
         if(el.password==password){
+
+          let userprofile={
+            email:email,
+            imageUrl:""
+          }
+          setProfile(userprofile)
+          setisAuth(true)
+          
           alert("Login Successful")
           return
         }else{
@@ -98,7 +109,7 @@ const Authenticate=()=>{
                 align={"start"}
                 justify={"space-between"}
               >
-                <Checkbox>Remember me</Checkbox>
+               <Button onClick={()=>navigate("/signup")} >Create an Account</Button>
                 <Link color={"blue.400"}>Forgot password?</Link>
               </Stack>
               <GoogleAuthUI />

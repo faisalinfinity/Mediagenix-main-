@@ -1,14 +1,26 @@
 {
-  "data": [{
-    "id":"janet.weaver@reqres.in",
-    "email": "janet.weaver@reqres.in",
-    "password": "janet.weaver@reqres.in"
-  },
-  {
-    "email":"mujtabafaisal944@gmail.com",
-    "password":"12345678",
-    "name":"faisal"
-  }],
+  "data": [
+    {
+      "text": "Day-1 Meme Template",
+      "url": "https://i.ibb.co/DfBfs8g/rvcj5.png",
+      "id": 1
+    },
+    {
+      "text": "Day-2 Meme Template",
+      "url": "https://i.ibb.co/WxqwPwk/rvcj3.png",
+      "id": 2
+    },
+    {
+      "text": "",
+      "url": "https://i.ibb.co/7p6dqpb/rvcj1.png",
+      "id": 3
+    },
+    {
+      "text": "",
+      "url": "https://i.ibb.co/SvMPK7Y/rvcj2.png",
+      "id": 4
+    }
+  ],
   "support": {
     "url": "https://reqres.in/#support-heading",
     "text": "To keep ReqRes free, contributions towards server costs are appreciated!"

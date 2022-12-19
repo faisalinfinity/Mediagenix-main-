@@ -16,7 +16,7 @@ export default function Btn({ text, clr, brdr, tc,wd }) {
         colorScheme="brand"
        
       >
-       <Link to="/login" >{text}</Link> 
+       <Link to="/dashboard" >{text}</Link> 
       </Button>
     </Center>
   );
