@@ -18,7 +18,7 @@ import {
   useBreakpointValue,
   useColorModeValue,
   useDisclosure,
-  useBoolean,Text,VStack
+  useBoolean,Text,VStack, Spacer
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FiMenu,FiInstagram } from "react-icons/fi";
@@ -29,6 +29,7 @@ import {BsLinkedin} from "react-icons/bs"
 import {BiPaperPlane,BiMessageDetail} from "react-icons/bi"
 import {GrLineChart} from "react-icons/gr"
 import {HiOutlinePencilSquare} from "react-icons/hi2"
+
 
 
 import Btn from "./Buttons/Btn-1"
@@ -42,7 +43,7 @@ import {
   ChevronDownIcon,
 } from "@chakra-ui/icons";
 import DrawerExample from "./Drawer/Drawer";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./logo";
 
 export const Navbar = () => {
@@ -53,6 +54,7 @@ export const Navbar = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [flag, setflag] = useBoolean();
+  const navigate=useNavigate()
 
   return (
     <Box
@@ -152,11 +154,12 @@ export const Navbar = () => {
                       </MenuItem>
                     </MenuList>
                   </Menu>
-                  <Button>Pricing</Button>
+                  <Button><NavLink to={"/pricing"}>Pricing</NavLink></Button>
                   <Button>Blog</Button>
                 </ButtonGroup>
                 <HStack spacing="1">
-                  <Btn tc="#2c4bff" text={"Log In"} />
+                  <Button onClick={()=>navigate("/login")} color={"#2c4bff"} variant='link' >Log in</Button>
+                {"  "}
                 <Btn clr="#2c4bff" text={"Get Started Now"} />
                  
                 </HStack>

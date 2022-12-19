@@ -8,12 +8,18 @@ import { Center } from "@chakra-ui/layout";
 
 export const AuthContext = createContext();
 
+
+
 export default function AuthContextProvider({ children }) {
   const clientId =
     "753388848937-vvg5pjh87cdg02uc6fa4m21k66p3d3im.apps.googleusercontent.com";
 
-  const [profile, setProfile] = useState([]);
+  const [profile, setProfile] = useState({});
+  const [isAuth,setisAuth]=useState(false)
   const navigate=useNavigate();
+
+
+ 
 
   useEffect(() => {
     const initClient = () => {
@@ -23,11 +29,13 @@ export default function AuthContextProvider({ children }) {
       });
     };
     gapi.load("client:auth2", initClient);
-  },[profile]);
+  },[]);
 
   const onSuccess = (res) => {
     setProfile(res.profileObj);
-    navigate("/")
+    localStorage.setItem("profile",JSON.stringify(res.profileObj))
+    setisAuth(true)
+    navigate("/dashboard")
   };
 
   const onFailure = (err) => {
@@ -35,7 +43,10 @@ export default function AuthContextProvider({ children }) {
   };
 
   const logOut = (e) => {
+   
     setProfile(null);
+    setisAuth(false)
+    localStorage.setItem("profile",JSON.stringify({}))
    
 
   };
@@ -44,12 +55,14 @@ export default function AuthContextProvider({ children }) {
 
   const GoogleAuthUI=()=>{
 
+   
+
     return(
         <div  class="g-signin2" data-width="900" data-height="200" data-longtitle="true">
       
             <br />
             <br />
-            {profile.name ? (
+            {profile&&profile?.name && profile? (
                 <div>
                     {/* <img src={profile.imageUrl} alt="user image" />
                     <h3>User Logged in</h3>
@@ -57,7 +70,7 @@ export default function AuthContextProvider({ children }) {
                     <p>Email Address: {profile.email}</p>
                     <br />
                     <br /> */}
-                     <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={logOut} />
+                   
                   
                 </div>
             ) : (
@@ -83,12 +96,15 @@ export default function AuthContextProvider({ children }) {
 
   //Masai Authentication
   const [name,setname]=useState("")
-
-  const UserData={
-    name:name,
-
+  const  LogoutButton=()=>{
+    return(
+      <GoogleLogout clientId={clientId}  buttonText="Log out" onLogoutSuccess={logOut} />
+    )
   }
 
 
-  return <AuthContext.Provider value={{GoogleAuthUI,profile,setname}} >{children}</AuthContext.Provider>;
+  
+
+
+  return <AuthContext.Provider value={{LogoutButton,GoogleAuthUI,profile,setname,isAuth,setisAuth,setProfile}} >{children}</AuthContext.Provider>;
 }
