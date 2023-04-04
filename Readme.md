@@ -1,5 +1,14 @@
-Welcome to my Project Mediagenix
-This project is the Clone of Buffer.com ,which is a Social media Management website.
+# Welcome to my Project Mediagenix
+ This project is the Clone of Buffer.com ,which is a Social media Management website.
+ This is an Individual project built within 5-days.
+ 
+ 
+ # Tech Stack 
+  # React 
+  # Chakra-UI
+  # Firebase for Google Auth
+  # Dropzone for Uploading Post
+  # React-Router-Dom
 
 # Deployed Link
 https://mediagenix.netlify.app/
